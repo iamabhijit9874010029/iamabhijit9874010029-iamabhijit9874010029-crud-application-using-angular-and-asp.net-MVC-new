@@ -1,0 +1,29 @@
+<table class="table table-striped table-bordered table-hover" datatable [dtOptions]="dtOptions">
+    <thead>
+        <tr>
+            <th scope="col">Serial Number</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Employee Code</th>
+            <th scope="col">Office</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employeeService.employeeList; let indexOfelement=index;">
+            <td>{{indexOfelement+1}}</td>
+            <td>{{employee.FirstName}} {{employee.LastName}}</td>
+            <td>{{employee.Position}}</td>
+            <td>{{employee.EmpCode}}</td>
+            <td>{{employee.Office}}</td>
+            <td>
+                <a class="btn d-inline text-success" (click)="showForEdit(employee)">
+                    <i class="fa-solid fa-file-pen"></i>
+                </a>
+                <a class="btn d-inline text-danger" (click)="onDelete(employee.EmployeeID)">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

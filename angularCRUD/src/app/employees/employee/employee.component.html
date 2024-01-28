@@ -1,0 +1,49 @@
+<form class="emp-form p-3 bg-light" #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm);">
+    <input type="hidden" class="form-control" name="EmployeeID" #EmployeeID="ngModel"
+        [(ngModel)]="employeeService.selectedEmployee.EmployeeID">
+    <div class="form-row row my-3">
+        <div class="form-group col-md-6">
+            <input class="form-control" name="FirstName" #FirstName="ngModel"
+                [(ngModel)]="employeeService.selectedEmployee.FirstName" placeholder="First Name" required>
+            <div class="validation-error text-danger" *ngIf="FirstName.invalid && FirstName.touched">
+                *This field is
+                required</div>
+        </div>
+        <div class="form-group col-md-6">
+            <input class="form-control" name="LastName" #LastName="ngModel"
+                [(ngModel)]="employeeService.selectedEmployee.LastName" placeholder="Last Name" required>
+            <div class="validation-error text-danger" *ngIf="LastName.invalid && LastName.touched">*This field is
+                required</div>
+        </div>
+    </div>
+    <div class="form-group my-3">
+        <input class="form-control" name="Position" #Position="ngModel"
+            [(ngModel)]="employeeService.selectedEmployee.Position" placeholder="Position" required>
+        <div class="validation-error text-danger" *ngIf="Position.invalid && Position.touched">*This field is
+            required</div>
+    </div>
+    <div class="form-row row my-3">
+        <div class="form-group col-md-8">
+            <input class="form-control" name="EmpCode" #EmpCode="ngModel"
+                [(ngModel)]="employeeService.selectedEmployee.EmpCode" placeholder="Employee Code" required>
+            <div class="validation-error text-danger" *ngIf="EmpCode.invalid && EmpCode.touched">*This field is
+                required</div>
+        </div>
+        <div class="form-group col-md-4">
+            <input class="form-control" name="Office" #Office="ngModel"
+                [(ngModel)]="employeeService.selectedEmployee.Office" placeholder="Office" required>
+            <div class="validation-error text-danger" *ngIf="Office.invalid && Office.touched">*This field is
+                required</div>
+        </div>
+    </div>
+    <div class="form-row row my-3">
+        <div class="form-group col-md-8 d-grid">
+            <button [disabled]="!employeeForm.valid" type="submit" class="btn btn-lg btn-success"><i
+                    class="fa-solid fa-floppy-disk"></i> Submit</button>
+        </div>
+        <div class="form-group col-md-4 d-grid">
+            <button type="button" class="btn btn-lg btn-secondary" (click)="resetForm(employeeForm);"><i
+                    class="fa-solid fa-repeat"></i> Reset</button>
+        </div>
+    </div>
+</form>
